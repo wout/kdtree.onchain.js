@@ -1,4 +1,4 @@
-# kdree.onchain.js
+# kdtree.onchain.js
 A micro JS library (960 bytes) for building K-Dimensional Trees and N-Nearest
 Neighbours search.
 
