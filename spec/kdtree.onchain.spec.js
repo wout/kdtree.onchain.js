@@ -1,4 +1,3 @@
-// import { KdTree } from '../kdtree.onchain.js'
 import {KdTree} from '../kdtree.onchain.js'
 
 describe('KdTree', () => {
