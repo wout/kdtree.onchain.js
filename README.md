@@ -4,7 +4,11 @@ Neighbours search.
 
 This library is intended for use in environments where the available storage
 space is very limited; like blockchains for example. Everything is stripped down
-to the bare essentials. 
+to the bare essentials.
+
+![GitHub](https://img.shields.io/github/license/onchainjs/kdtree.onchain.js)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/onchainjs/kdtree.onchain.js)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/onchainjs/kdtree.onchain.js/kdtree.onchain.js%20CI)
 
 ## Usage
 Build a new kd-tree from an arbitrary number of points:
