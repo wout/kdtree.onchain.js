@@ -10,7 +10,7 @@
  * @typedef {number[]} KdPoint
  */
 
-export const KdTree = {
+export const KdT = {
   /**
     * Builds a KD-Tree from an array of points.
     *
@@ -20,7 +20,7 @@ export const KdTree = {
     * @param {number} l - Numberof points (for internal use only).
     * @returns {KdNode|null} A node within the KD-Tree.
     */
-  build(ps, k = ps[0]?.length, d = 0, l = ps.length) {
+  build(ps, k = (ps[0] || []).length, d = 0, l = ps.length) {
     return !l ? null : this.node(this.sort(ps, d % k), ~~(l / 2), k, d)
   },
 
@@ -91,7 +91,7 @@ export const KdTree = {
    */
   s(ps, q, n, p, a, nf) {
     return this.sf(
-      this.near(nf[0], q, n, ps.slice()), q, n, this.d([p[a]], [q[a]]), nf[1]
+      this.near(nf[0], q, n, ps), q, n, this.d([p[a]], [q[a]]), nf[1]
     )
   },
 
@@ -107,7 +107,7 @@ export const KdTree = {
    * @returns {KdPoint[]} The nearest point(s).
    */
   sf(ps, q, n, d, f) {
-    return ps.find(p => this.d(p, q) >= d) ? this.near(f, q, n, ps.slice()) : ps
+    return ps.find(p => this.d(p, q) >= d) ? this.near(f, q, n, ps) : ps
   },
 
   /**

@@ -1,6 +1,6 @@
-import {KdTree} from '../kdtree.onchain.js'
+import {KdT} from '../kdtree.onchain.js'
 
-describe('KdTree', () => {
+describe('KdT', () => {
   const k2points = [
     [2, 3],
     [5, 4],
@@ -21,7 +21,7 @@ describe('KdTree', () => {
 
   describe('.build', () => {
     it('creates a new kd-tree from the given points', () => {
-      let tree = KdTree.build(k2points)
+      let tree = KdT.build(k2points)
 
       expect(tree).toBeInstanceOf(Map)
       expect(tree.get('p')).toEqual([7, 2])
@@ -31,49 +31,49 @@ describe('KdTree', () => {
     })
 
     it('returns null given and empty list', () => {
-      expect(KdTree.build([])).toBe(null)
+      expect(KdT.build([])).toBe(null)
     })
   })
 
   describe('.sort', () => {
     it('sorts all points on a given axis', () => {
-      expect(KdTree.sort(k2points, 0))
+      expect(KdT.sort(k2points, 0))
         .toEqual([[2, 3], [4, 7], [5, 4], [7, 2], [8, 1], [9, 6]])
-      expect(KdTree.sort(k2points, 1))
+      expect(KdT.sort(k2points, 1))
         .toEqual([[8, 1], [7, 2], [2, 3], [5, 4], [9, 6], [4, 7]])
     })
 
     it('returns a new array', () => {
-      expect(KdTree.sort(k2points, 0)).not.toBe(k2points)
+      expect(KdT.sort(k2points, 0)).not.toBe(k2points)
     })
   })
 
   describe('.near', () => {
     describe('with 2-d points', () => {
-      const tree = KdTree.build(k2points)
+      const tree = KdT.build(k2points)
 
       it('finds the nearest one', () => {
-        expect(KdTree.near(tree, [1, 1])).toEqual([[2, 3]])
+        expect(KdT.near(tree, [1, 1])).toEqual([[2, 3]])
       })
 
       it('finds the nearest many', () => {
-        expect(KdTree.near(tree, [1, 1], 2)).toEqual([[2, 3], [5, 4]])
+        expect(KdT.near(tree, [1, 1], 2)).toEqual([[2, 3], [5, 4]])
       })
 
       it('finds the nearest too many', () => {
-        expect(KdTree.near(tree, [1, 1], 100).length).toEqual(k2points.length)
+        expect(KdT.near(tree, [1, 1], 100).length).toEqual(k2points.length)
       })
     })
 
     describe('with 3-d points', () => {
-      const tree = KdTree.build(k3points)
+      const tree = KdT.build(k3points)
 
       it('finds the nearest one', () => {
-        expect(KdTree.near(tree, [1, 1, 0])).toEqual([[2, 3, 0]])
+        expect(KdT.near(tree, [1, 1, 0])).toEqual([[2, 3, 0]])
       })
 
       it('finds the nearest many', () => {
-        expect(KdTree.near(tree, [1, 1, 0], 2)).toEqual([[2, 3, 0], [5, 4, 0]])
+        expect(KdT.near(tree, [1, 1, 0], 2)).toEqual([[2, 3, 0], [5, 4, 0]])
       })
     })
   })
