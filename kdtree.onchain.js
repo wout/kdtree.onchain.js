@@ -21,7 +21,7 @@ export const KdT = {
     * @returns {KdNode|null} A node within the KD-Tree.
     */
   build(ps, k = (ps[0] || []).length, d = 0, l = ps.length) {
-    return !l ? null : this.node(this.sort(ps, d % k), ~~(l / 2), k, d)
+    return !l ? null : KdT.node(KdT.sort(ps, d % k), ~~(l / 2), k, d)
   },
 
   /**
@@ -37,8 +37,8 @@ export const KdT = {
     return (new Map)
       .set('p', ps[m])
       .set('a', d % k)
-      .set('l', !m ? null : this.build(ps.slice(0, m), k, d + 1))
-      .set('r', !m ? null : this.build(ps.slice(m), k, d + 1))
+      .set('l', !m ? null : KdT.build(ps.slice(0, m), k, d + 1))
+      .set('r', !m ? null : KdT.build(ps.slice(m), k, d + 1))
   },
 
   /**
@@ -74,8 +74,8 @@ export const KdT = {
    */
   near(c, q, n = 1, ps = []) {
     if (!c) return ps
-    this.reg(ps, c.get('p'), q, n)
-    return this.s(ps, q, n, c.get('p'), c.get('a'), this.nf(q, ...c.values()))
+    KdT.reg(ps, c.get('p'), q, n)
+    return KdT.s(ps, q, n, c.get('p'), c.get('a'), KdT.nf(q, ...c.values()))
   },
 
   /**
@@ -90,8 +90,8 @@ export const KdT = {
    * @returns {KdPoint[]} The nearest point(s).
    */
   s(ps, q, n, p, a, nf) {
-    return this.sf(
-      this.near(nf[0], q, n, ps), q, n, this.d([p[a]], [q[a]]), nf[1]
+    return KdT.sf(
+      KdT.near(nf[0], q, n, ps), q, n, KdT.d([p[a]], [q[a]]), nf[1]
     )
   },
 
@@ -107,7 +107,7 @@ export const KdT = {
    * @returns {KdPoint[]} The nearest point(s).
    */
   sf(ps, q, n, d, f) {
-    return ps.find(p => this.d(p, q) >= d) ? this.near(f, q, n, ps) : ps
+    return ps.find(p => KdT.d(p, q) >= d) ? KdT.near(f, q, n, ps) : ps
   },
 
   /**
@@ -120,7 +120,7 @@ export const KdT = {
     * @returns {undefined}
     */
   reg(ps, p, q, n) {
-    ps.length < n ? this.push(ps, p) : this.put(ps, p, q, this.d(p, q))
+    ps.length < n ? KdT.push(ps, p) : KdT.put(ps, p, q, KdT.d(p, q))
   },
 
   /**
@@ -145,7 +145,7 @@ export const KdT = {
     * @returns {undefined}
     */
   put(ps, p, q, d, i) {
-    if ((i = ps.findIndex(p => d < this.d(p, q))) > -1) ps[i] = p
+    if ((i = ps.findIndex(p => d < KdT.d(p, q))) > -1) ps[i] = p
   },
 
   /**

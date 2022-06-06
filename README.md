@@ -1,5 +1,5 @@
 # kdtree.onchain.js
-A micro JS library (877 bytes) for building K-Dimensional Trees with N-Nearest
+A micro JS library (832 bytes) for building K-Dimensional Trees with N-Nearest
 Neighbours search.
 
 This library is intended for use in environments where the available storage
