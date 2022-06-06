@@ -1,6 +1,6 @@
 {
   "name": "kdtree.onchain.js",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A micro JS library for K-Dimensional Tree and N-Nearest Neighbours.",
   "main": "kdtree.onchain.js",
   "repository": "git@github.com:onchainjs/kdtree.onchain.js.git",
