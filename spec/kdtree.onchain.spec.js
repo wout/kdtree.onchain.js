@@ -19,9 +19,9 @@ describe('KdT', () => {
     [9.0, 6.0, 0.1],
   ]
 
-  describe('.build', () => {
+  describe('.ree', () => {
     it('creates a new kd-tree from the given points', () => {
-      let tree = KdT.build(k2points)
+      let tree = KdT.ree(k2points)
 
       expect(tree).toBeInstanceOf(Map)
       expect(tree.get('p')).toEqual([7, 2])
@@ -31,7 +31,7 @@ describe('KdT', () => {
     })
 
     it('returns null given and empty list', () => {
-      expect(KdT.build([])).toBe(null)
+      expect(KdT.ree([])).toBe(null)
     })
   })
 
@@ -50,7 +50,7 @@ describe('KdT', () => {
 
   describe('.near', () => {
     describe('with 2-d points', () => {
-      const tree = KdT.build(k2points)
+      const tree = KdT.ree(k2points)
 
       it('finds the nearest one', () => {
         expect(KdT.near(tree, [1, 1])).toEqual([[2, 3]])
@@ -66,7 +66,7 @@ describe('KdT', () => {
     })
 
     describe('with 3-d points', () => {
-      const tree = KdT.build(k3points)
+      const tree = KdT.ree(k3points)
 
       it('finds the nearest one', () => {
         expect(KdT.near(tree, [1, 1, 0])).toEqual([[2, 3, 0]])

@@ -1,5 +1,5 @@
 # kdtree.onchain.js
-A micro JS library (832 bytes) for building K-Dimensional Trees with N-Nearest
+A micro JS library (820 bytes) for building K-Dimensional Trees with N-Nearest
 Neighbours search.
 
 This library is intended for use in environments where the available storage
@@ -14,7 +14,7 @@ to the bare essentials.
 Build a new kd-tree from an arbitrary number of points:
 
 ```js
-let tree = KdT.build([
+let tree = KdT.ree([
   [2, 3],
   [5, 4],
   [4, 7],
@@ -42,7 +42,7 @@ Build a tree with points of any dimension, as long as the dimensions of the
 points are all the same:
 
 ```js
-tree = KdT.build([
+tree = KdT.ree([
   [2.0, 3.0, 0.0],
   [5.0, 4.0, 0.0],
   [4.0, 7.0, 0.0],

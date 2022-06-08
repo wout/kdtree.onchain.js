@@ -20,7 +20,7 @@ export const KdT = {
     * @param {number} l - Numberof points (for internal use only).
     * @returns {KdNode|null} A node within the KD-Tree.
     */
-  build(ps, k = (ps[0] || []).length, d = 0, l = ps.length) {
+  ree(ps, k = (ps[0] || []).length, d = 0, l = ps.length) {
     return !l ? null : KdT.node(KdT.sort(ps, d % k), ~~(l / 2), k, d)
   },
 
@@ -37,8 +37,8 @@ export const KdT = {
     return (new Map)
       .set('p', ps[m])
       .set('a', d % k)
-      .set('l', !m ? null : KdT.build(ps.slice(0, m), k, d + 1))
-      .set('r', !m ? null : KdT.build(ps.slice(m), k, d + 1))
+      .set('l', !m ? null : KdT.ree(ps.slice(0, m), k, d + 1))
+      .set('r', !m ? null : KdT.ree(ps.slice(m), k, d + 1))
   },
 
   /**
